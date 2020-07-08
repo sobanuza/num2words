@@ -98,6 +98,7 @@ Besides the numerical argument, there are two main optional arguments.
 * ``ja`` (Japanese)
 * ``kn`` (Kannada)
 * ``ko`` (Korean)
+* ``kr`` (Kinyarwanda)
 * ``kz`` (Kazakh)
 * ``lt`` (Lithuanian)
 * ``lv`` (Latvian)
