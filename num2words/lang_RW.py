@@ -20,7 +20,7 @@ from __future__ import division, print_function, unicode_literals
 from . import lang_EU
 
 
-class Num2Word_KR(lang_EU.Num2Word_EU):
+class Num2Word_RW(lang_EU.Num2Word_EU):
     def set_high_numwords(self, high):
         max = 3 + 3 * len(high)
         for word, n in zip(high, range(max, 3, -3)):

@@ -128,7 +128,7 @@ TEST_CASES_TO_CURRENCY_EUR = (
     (100.00, 'amayero ijana n\' ibice zeru'),
 )
 
-TEST_CASES_TO_CURRENCY_FRW = (
+TEST_CASES_TO_CURRENCY_RWF = (
     (1.00, 'ifaranga rimwe n\' ibice zeru'),
     (2.01, 'amafaranga abiri n\'igice kimwe'),
     (8.10, 'amafaranga umunani n\' ibice icumi'),
@@ -191,9 +191,9 @@ class Num2WordsENTest(TestCase):
             )
 
     def test_currency_frf(self):
-        for test in TEST_CASES_TO_CURRENCY_FRW:
+        for test in TEST_CASES_TO_CURRENCY_RWF:
             self.assertEqual(
-                num2words(test[0], lang='kr', to='currency', currency='FRW'),
+                num2words(test[0], lang='kr', to='currency', currency='RWF'),
                 test[1]
             )
 
