@@ -76,22 +76,17 @@ class Num2Word_RW(lang_EU.Num2Word_EU):
 
     def to_ordinal(self, value):
         self.verify_ordinal(value)
-        outwords = self.to_cardinal(value).split(" ")
-        lastwords = outwords[-1].split("-")
-        lastword = lastwords[-1].lower()
-        try:
-            lastword = self.ords[lastword]
-        except KeyError:
-            if lastword[-1] == "y":
-                lastword = lastword[:-1] + "ie"
-            lastword += "th"
-        lastwords[-1] = self.title(lastword)
-        outwords[-1] = "-".join(lastwords)
-        return " ".join(outwords)
+        word = self.to_cardinal(value)
+        if value == 1:
+            word = "mbere"
+        if word[0] in ('a', 'e', 'i', 'o', 'u'):
+            return "uw' " + word
+        else:
+            return "uwa " + word
 
     def to_ordinal_num(self, value):
         self.verify_ordinal(value)
-        return "%s%s" % (value, self.to_ordinal(value)[-2:])
+        return "uwa " + str(value)
 
     def to_year(self, val, suffix=None, longval=True):
         if val < 0:

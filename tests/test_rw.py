@@ -149,7 +149,7 @@ TEST_CASES_TO_CURRENCY_USD = (
 )
 
 
-class Num2WordsENTest(TestCase):
+class Num2WordsRWTest(TestCase):
     def test_ordinal_special_joins(self):
         # ref https://github.com/savoirfairelinux/num2words/issues/18
         self.assertEqual(
