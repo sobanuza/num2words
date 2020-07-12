@@ -39,10 +39,9 @@ class Num2Word_RW(lang_EU.Num2Word_EU):
         self.pointword = "n' ibice"
         self.exclude_title = ["na", "ibice", "munsi ya zeru"] #"n'" 
 
-        self.mid_numwords = [(1000, "igihumbi"), (100, "hundred"),
-                             (90, "ninety"), (80, "eighty"), (70, "seventy"),
-                             (60, "sixty"), (50, "fifty"), (40, "forty"),
-                             (30, "thirty")]
+        self.mid_numwords = [(1000, "igihumbi"), (100, "ijana"),  (90, "mirongo icyenda"), 
+                             (80, "mirongo inani"), (70, "mirongo irindwi"), (60, "mirongo itandatu"), 
+                             (50, "mirongo itanu"), (40, "mirongo ine"), (30, "mirongo itatu")]
         self.low_numwords = ["makumyabiri", "cumi n'icyenda", "cumi n'umunani", "cumi na karindi",
                              "cumi na gatandatu", "cumi na gatanu", "cumi na kane", "cumi na gatatu",
                              "cumi na kabiri", "cumi na rimwe", "icumi", "icyenda", "umunani",
@@ -57,22 +56,27 @@ class Num2Word_RW(lang_EU.Num2Word_EU):
                      "karindwi": "uwa karindwi",
                      "umunani": "uwa munani",
                      "icyenda": "uwa cyenda",
-                     "icumi": "uwa cumi",
+                     "cumi": "uwa cumi",
                      "cumi na rimwe": "uwa cumi na rimwe",
                      "cumi na kabiri": "uwa cumi na kabiri"}
 
     def merge(self, lpair, rpair):
+        # print("lpair: " + str(lpair))
+        # print("rpair: " + str(rpair))
         ltext, lnum = lpair
         rtext, rnum = rpair
+        joiner = "na"
+        if rtext[0] in ('a', 'e', 'i', 'o', 'u'):
+            joiner = "n'"
         if lnum == 1 and rnum < 100:
             return (rtext, rnum)
         elif 100 > lnum > rnum:
-            return ("%s-%s" % (ltext, rtext), lnum + rnum)
+            return ("%s %s %s" % (ltext, joiner, rtext), lnum + rnum)
         elif lnum >= 100 > rnum:
-            return ("%s and %s" % (ltext, rtext), lnum + rnum)
+            return ("%s %s %s" % (ltext, joiner, rtext), lnum + rnum)
         elif rnum > lnum:
-            return ("%s %s" % (ltext, rtext), lnum * rnum)
-        return ("%s, %s" % (ltext, rtext), lnum + rnum)
+            return ("%s %s %s" % (ltext, joiner, rtext), lnum * rnum)
+        return ("%s %s %s" % (ltext, joiner, rtext), lnum + rnum)
 
     def to_ordinal(self, value):
         self.verify_ordinal(value)

@@ -93,7 +93,7 @@ TEST_CASES_CARDINAL = (
 
 TEST_CASES_ORDINAL = (
     (1, 'uwa mbere'),
-    (8, 'uwa munani'),
+    (8, 'uw\' umunani'),
     (12, 'uwa cumi na kabiri'),
     (14, 'uwa cumi na kane'),
     (28, 'uwa makumyabiri n\' umunani'),
