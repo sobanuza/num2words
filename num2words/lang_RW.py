@@ -21,13 +21,19 @@ from . import lang_EU
 
 
 class Num2Word_RW(lang_EU.Num2Word_EU):
+    CURRENCY_FORMS = {
+        'EUR': (('iyero', 'amayero'), ('igice', 'ibice')),
+        'USD': (('idolari', 'amadolari'), ('senti', 'amasenti')),
+        'RWF': (('ifaranga', 'amafaranga'), ('igice', 'ibice')),
+    }
+    
     def set_high_numwords(self, high):
         max = 3 + 3 * len(high)
         for word, n in zip(high, range(max, 3, -3)):
             self.cards[10 ** n] = word + "illion"
 
     def setup(self):
-        super(Num2Word_EN, self).setup()
+        super(Num2Word_RW, self).setup()
 
         self.negword = "munsi ya zeru"
         self.pointword = "n' ibice"

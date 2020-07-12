@@ -24,7 +24,7 @@ TEST_CASES_CARDINAL = (
     (1, 'rimwe'),
     (2, 'kabiri'),
     (3, 'gatatu'),
-    (5.5, 'gatani n\' ibice bitanu'),
+    (5.5, 'gatanu n\' ibice bitanu'),
     (11, 'cumi na rimwe'),
     (12, 'cumi na kabiri'),
     (16, 'cumi na gatandatu'),
@@ -139,13 +139,13 @@ TEST_CASES_TO_CURRENCY_RWF = (
 )
 
 TEST_CASES_TO_CURRENCY_USD = (
-    (1.00, 'idolari rimwe n\' amacenti zeru'),
-    (2.01, 'amadolari abiri n\'amacenti kimwe'),
-    (8.10, 'amadolari umunani n\' amacenti icumi'),
-    (12.26, 'amadolari cumi n\' abiri n\' amacenti makumyabiri na bitandatu'),
-    (21.29, 'amadolari makumyabiri n\' amacenti makumyabiri n\' icyenda'),
-    (81.25, 'amadolari mirongo inani n\' amacenti makumyabiri na bitanu'),
-    (100.00, 'amadolari ijana n\' amacenti zeru'),
+    (1.00, 'idolari rimwe n\' amasenti zeru'),
+    (2.01, 'amadolari abiri n\'amasenti kimwe'),
+    (8.10, 'amadolari umunani n\' amasenti icumi'),
+    (12.26, 'amadolari cumi n\' abiri n\' amasenti makumyabiri na bitandatu'),
+    (21.29, 'amadolari makumyabiri n\' amasenti makumyabiri n\' icyenda'),
+    (81.25, 'amadolari mirongo inani n\' amasenti makumyabiri na bitanu'),
+    (100.00, 'amadolari ijana n\' amasenti zeru'),
 )
 
 
@@ -153,53 +153,53 @@ class Num2WordsENTest(TestCase):
     def test_ordinal_special_joins(self):
         # ref https://github.com/savoirfairelinux/num2words/issues/18
         self.assertEqual(
-            num2words(5, ordinal=True, lang='kr'), "uwa gatanu"
+            num2words(5, ordinal=True, lang='rw'), "uwa gatanu"
         )
         self.assertEqual(
-            num2words(35, ordinal=True, lang='kr'), "uwa mirongo itatu na gatanu"
+            num2words(35, ordinal=True, lang='rw'), "uwa mirongo itatu na gatanu"
         )
         self.assertEqual(
-            num2words(9, ordinal=True, lang='kr'), "uwa cyenda"
+            num2words(9, ordinal=True, lang='rw'), "uwa cyenda"
         )
         self.assertEqual(
-            num2words(49, ordinal=True, lang='kr'), "uwa mirongo ine n\' icyenda"
+            num2words(49, ordinal=True, lang='rw'), "uwa mirongo ine n\' icyenda"
         )
 
     def test_number(self):
         for test in TEST_CASES_CARDINAL:
-            self.assertEqual(num2words(test[0], lang='kr'), test[1])
+            self.assertEqual(num2words(test[0], lang='rw'), test[1])
 
     def test_ordinal(self):
         for test in TEST_CASES_ORDINAL:
             self.assertEqual(
-                num2words(test[0], lang='kr', ordinal=True),
+                num2words(test[0], lang='rw', ordinal=True),
                 test[1]
             )
 
     def test_ordinal_num(self):
         for test in TEST_CASES_ORDINAL_NUM:
             self.assertEqual(
-                num2words(test[0], lang='kr', to='ordinal_num'),
+                num2words(test[0], lang='rw', to='ordinal_num'),
                 test[1]
             )
 
     def test_currency_eur(self):
         for test in TEST_CASES_TO_CURRENCY_EUR:
             self.assertEqual(
-                num2words(test[0], lang='kr', to='currency', currency='EUR'),
+                num2words(test[0], lang='rw', to='currency', currency='EUR'),
                 test[1]
             )
 
     def test_currency_frf(self):
         for test in TEST_CASES_TO_CURRENCY_RWF:
             self.assertEqual(
-                num2words(test[0], lang='kr', to='currency', currency='RWF'),
+                num2words(test[0], lang='rw', to='currency', currency='RWF'),
                 test[1]
             )
 
     def test_currency_usd(self):
         for test in TEST_CASES_TO_CURRENCY_USD:
             self.assertEqual(
-                num2words(test[0], lang='kr', to='currency', currency='USD'),
+                num2words(test[0], lang='rw', to='currency', currency='USD'),
                 test[1]
             )
